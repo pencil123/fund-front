@@ -1,0 +1,16 @@
+.fundSelect .ant-page-header-heading {
+  justify-content: start;
+  width: 100%;
+}
+
+.fundSelect  .ant-page-header-heading-title{
+    width: 60px;
+}
+
+.fundSelect .ant-page-header-heading-extra {
+    width: 100%;
+}
+
+.fundSelect  .ant-picker-range{
+    float: right;
+}

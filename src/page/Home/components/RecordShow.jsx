@@ -11,9 +11,12 @@ export class RecordShow extends Component {
   }
   topoChart = () => {
     this.myChart.setOption({
-      title: { text: "fund 画图" },
+      color: ["#990033", "#990033", "#0000FF", "#000000"],
+      title: { text: this.props.selectedfund },
       legend: {
-        data: ["净值", "week", "month", "3month"],
+        data: ["净值", "week", "month", "month3"],
+        bottom: 0,
+        left: "center",
       },
       tooltip: {
         trigger: "axis",
@@ -24,12 +27,16 @@ export class RecordShow extends Component {
       },
       yAxis: {
         type: "value",
+        scale: "true",
       },
       series: [
         {
           data: this.props.dwjz,
           type: "line",
           name: "净值",
+          lineStyle: {
+            type: "dashed",
+          },
         },
         {
           data: this.props.week,
@@ -66,5 +73,6 @@ RecordShow.propTypes = {
   month3: PropTypes.array,
   date: PropTypes.array,
   dwjz: PropTypes.array,
+  selectedfund: PropTypes.string,
 };
 export default RecordShow;
