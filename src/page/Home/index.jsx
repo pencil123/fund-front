@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import api from "../../util/api";
+import requst from "../../util/request";
 import { Layout } from "antd";
 import FundSelect from "./components/FundSelect";
 import RecordShow from "./components/RecordShow";
@@ -28,12 +28,16 @@ export class index extends Component {
   }
 
   async fundlist() {
-    let path = "/api/fund/list";
-    let res = await api.get(path);
-    if (res.data.length > 0)
-      this.setState({ funds: res.data }, () => {
-        this.recordlist(res.data[0].fundCode);
-      });
+    let path = "fund/list";
+    try {
+      let res = await requst.get(path);
+      if (res.length > 0)
+        this.setState({ funds: res }, () => {
+          this.recordlist(res[0].fundCode);
+        });
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   datePickerChange = (dates, dateStrings) => {
@@ -43,20 +47,20 @@ export class index extends Component {
   };
 
   recordlist = async (fundCode) => {
-    let path = "/api/record/find/list";
+    let path = "fundRecord/find/list";
     let params = {
       fundCode: fundCode,
       startDay: this.state.dateStrings[0],
       endDay: this.state.dateStrings[1],
     };
-    let res = await api.get(path, params);
-    if (res.data.length > 0) {
+    let res = await requst.get(path, params);
+    if (res.length > 0) {
       let dwjz = [],
         week = [],
         month = [],
         month3 = [],
         date = [];
-      res.data.reverse().forEach(function (record, index) {
+      res.reverse().forEach(function (record, index) {
         dwjz.push(record.dwjz);
         week.push(record.avgWeek);
         month.push(record.avgMonth);
