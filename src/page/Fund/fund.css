@@ -14,3 +14,7 @@
 .fundSelect  .ant-picker-range{
     float: right;
 }
+
+.ant-tabs-content-holder{
+    background-color: white;
+}

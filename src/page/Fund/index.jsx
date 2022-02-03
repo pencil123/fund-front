@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import requst from "../../util/request";
-import { Layout } from "antd";
 import FundSelect from "./components/FundSelect";
 import RecordShow from "./components/RecordShow";
 import moment from "moment";
-import "./home.css";
-const { Header, Footer, Content } = Layout;
+import "./fund.css";
 export class index extends Component {
   constructor(props) {
     super(props);
@@ -80,27 +78,23 @@ export class index extends Component {
 
   render() {
     return (
-      <Layout>
-        <Header>Header</Header>
-        <Content>
-          <FundSelect
-            funds={this.state.funds}
-            selectedfund={this.state.selectedfund}
-            recordlist={this.recordlist}
-            dates={this.state.dates}
-            datePickerChange={this.datePickerChange}
-          />
-          <RecordShow
-            dwjz={this.state.dwjz}
-            week={this.state.week}
-            month={this.state.month}
-            month3={this.state.month3}
-            date={this.state.date}
-            selectedfund={this.state.selectedfund}
-          />
-        </Content>
-        <Footer>Footer</Footer>
-      </Layout>
+      <>
+        <FundSelect
+          funds={this.state.funds}
+          selectedfund={this.state.selectedfund}
+          recordlist={this.recordlist}
+          dates={this.state.dates}
+          datePickerChange={this.datePickerChange}
+        />
+        <RecordShow
+          dwjz={this.state.dwjz}
+          week={this.state.week}
+          month={this.state.month}
+          month3={this.state.month3}
+          date={this.state.date}
+          selectedfund={this.state.selectedfund}
+        />
+      </>
     );
   }
   componentDidMount() {
