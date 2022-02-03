@@ -25,7 +25,7 @@ export class index extends Component {
   }
 
   async bankuaiList() {
-    let path = "fund/list";
+    let path = "bk/list";
     try {
       let res = await requst.get(path);
       if (res.length > 0)
@@ -44,7 +44,7 @@ export class index extends Component {
   };
 
   recordlist = async (code) => {
-    let path = "fundRecord/find/list";
+    let path = "bkRecord/find/list";
     let params = {
       code: code,
       startDay: this.state.dateStrings[0],
@@ -58,7 +58,7 @@ export class index extends Component {
         twoweek = [],
         date = [];
       res.reverse().forEach(function (record, index) {
-        price.push(record.dwjz);
+        price.push(record.price);
         week.push(record.avgWeek);
         month.push(record.avgMonth);
         twoweek.push(record.avgTwoWeek);
@@ -91,8 +91,8 @@ export class index extends Component {
           month={this.state.month}
           twoweek={this.state.twoweek}
           date={this.state.date}
-          selectedcat={this.state.selectedcat}
-          elementId="fund"
+          selectedfund={this.state.selectedcat}
+          elementId="bankuai"
         />
       </>
     );

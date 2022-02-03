@@ -19,16 +19,16 @@ export class FundSelect extends Component {
               key="fundSelect"
               style={{ width: 300 }}
               showSearch
-              value={this.props.selectedfund}
+              value={this.props.selectedcat}
               placeholder="Select a person"
               optionFilterProp="children"
               onChange={this.props.recordlist}
               onSearch={this.onSearch}
             >
-              {this.props.funds.map((fund) => {
+              {this.props.cats.map((catObject) => {
                 return (
-                  <Option key={fund.fundCode} value={fund.fundCodee}>
-                    {fund.fundCode}/{fund.fundName}
+                  <Option key={catObject.code} value={catObject.code}>
+                    {catObject.code}/{catObject.name}
                   </Option>
                 );
               })}
@@ -45,8 +45,8 @@ export class FundSelect extends Component {
 }
 
 FundSelect.propTypes = {
-  funds: PropTypes.array,
-  selectedfund: PropTypes.string,
+  cats: PropTypes.array,
+  selectedcat: PropTypes.string,
   recordlist: PropTypes.func,
   dates: PropTypes.array,
   datePickerChange: PropTypes.func,
