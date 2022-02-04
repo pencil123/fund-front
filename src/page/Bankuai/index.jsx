@@ -91,7 +91,7 @@ export class index extends Component {
           month={this.state.month}
           twoweek={this.state.twoweek}
           date={this.state.date}
-          selectedfund={this.state.selectedcat}
+          selectedcat={this.state.selectedcat}
           elementId="bankuai"
         />
       </>

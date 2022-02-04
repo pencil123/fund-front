@@ -58,7 +58,7 @@ export class index extends Component {
         twoweek = [],
         date = [];
       res.reverse().forEach(function (record, index) {
-        price.push(record.dwjz);
+        price.push(record.price);
         week.push(record.avgWeek);
         month.push(record.avgMonth);
         twoweek.push(record.avgTwoWeek);
