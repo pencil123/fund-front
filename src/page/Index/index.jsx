@@ -3,6 +3,7 @@ import { Layout, Tabs, Row, Col } from "antd";
 import Fund from "../Fund";
 import Bankuai from "../Bankuai";
 import Indices from "../Indices";
+import Gainian from "../Gainian";
 const { Header, Footer, Content } = Layout;
 const { TabPane } = Tabs;
 
@@ -21,10 +22,13 @@ export class index extends Component {
                 <TabPane tab="指数" key="1">
                   <Indices />
                 </TabPane>
-                <TabPane tab="板块" key="2">
+                <TabPane tab="行业板块" key="2">
                   <Bankuai />
                 </TabPane>
-                <TabPane tab="基金" key="3">
+                <TabPane tab="概念板块" key="3">
+                  <Gainian />
+                </TabPane>
+                <TabPane tab="关注基金" key="4">
                   <Fund />
                 </TabPane>
               </Tabs>
