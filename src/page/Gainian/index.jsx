@@ -18,6 +18,7 @@ export class index extends Component {
       week: [],
       month: [],
       twoweek: [],
+      degree: [],
       date: [],
       dates: [today, monthAgo],
       dateStrings: [startString, endString],
@@ -56,12 +57,14 @@ export class index extends Component {
         week = [],
         month = [],
         twoweek = [],
+        degree = [],
         date = [];
       res.reverse().forEach(function (record, index) {
         price.push(record.price);
         week.push(record.avgWeek);
         month.push(record.avgMonth);
         twoweek.push(record.avgTwoWeek);
+        degree.push(record.degree);
         date.push(record.opendate);
       });
       this.setState({
@@ -69,6 +72,7 @@ export class index extends Component {
         week,
         month,
         twoweek,
+        degree,
         date,
         selectedcat: code,
       });
@@ -90,6 +94,7 @@ export class index extends Component {
           week={this.state.week}
           month={this.state.month}
           twoweek={this.state.twoweek}
+          degree={this.state.degree}
           date={this.state.date}
           selectedcat={this.state.selectedcat}
           elementId="gainian"

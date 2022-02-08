@@ -21,8 +21,6 @@ export class index extends Component {
               xs={24}
               sm={{ span: 22, push: 1 }}
               md={{ span: 20, push: 2 }}
-              lg={{ span: 18, push: 3 }}
-              xl={{ span: 16, push: 4 }}
               className="card-container"
             >
               <Tabs defaultActiveKey="1" onChange={this.callback} type="card">

@@ -14,21 +14,36 @@ export class RecordShow extends Component {
       color: ["#990033", "#990033", "#0000FF", "#000000"],
       title: { text: this.props.selectedcat },
       legend: {
-        data: ["净值", "week", "twoweek", "month"],
+        data: ["净值", "week", "twoweek", "month", "degree"],
         bottom: 0,
         left: "center",
       },
       tooltip: {
         trigger: "axis",
       },
-      xAxis: {
-        type: "category",
-        data: this.props.date,
-      },
-      yAxis: {
-        type: "value",
-        scale: "true",
-      },
+      xAxis: [
+        { type: "category", data: this.props.date },
+        { type: "category", data: this.props.date, gridIndex: 1 },
+      ],
+      yAxis: [
+        {
+          type: "value",
+          scale: "true",
+        },
+        {
+          type: "value",
+          scale: "true",
+          gridIndex: 1,
+        },
+      ],
+      grid: [
+        {
+          bottom: "40%",
+        },
+        {
+          top: "70%",
+        },
+      ],
       series: [
         {
           data: this.props.price,
@@ -53,6 +68,13 @@ export class RecordShow extends Component {
           type: "line",
           name: "month",
         },
+        {
+          data: this.props.degree,
+          type: "line",
+          name: "degree",
+          xAxisIndex: 1,
+          yAxisIndex: 1,
+        },
       ],
     });
   };
@@ -61,7 +83,7 @@ export class RecordShow extends Component {
       <div
         id={this.props.elementId}
         className="echart 画图"
-        style={{ width: "100%", height: 550 }}
+        style={{ width: "100%", height: 700 }}
       ></div>
     );
   }
@@ -71,6 +93,7 @@ RecordShow.propTypes = {
   week: PropTypes.array,
   month: PropTypes.array,
   twoweek: PropTypes.array,
+  degree: PropTypes.array,
   date: PropTypes.array,
   price: PropTypes.array,
   selectedcat: PropTypes.string,
