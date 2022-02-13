@@ -4,6 +4,7 @@ import Fund from "../Fund";
 import Bankuai from "../Bankuai";
 import Indices from "../Indices";
 import Gainian from "../Gainian";
+import IndexFund from "../IndexFund";
 const { Header, Footer, Content } = Layout;
 const { TabPane } = Tabs;
 
@@ -32,6 +33,9 @@ export class index extends Component {
                 </TabPane>
                 <TabPane tab="概念板块" key="3">
                   <Gainian />
+                </TabPane>
+                <TabPane tab="指数基金" key="5">
+                  <IndexFund />
                 </TabPane>
                 <TabPane tab="关注基金" key="4">
                   <Fund />
