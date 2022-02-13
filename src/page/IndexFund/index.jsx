@@ -97,7 +97,7 @@ export class index extends Component {
           degree={this.state.degree}
           date={this.state.date}
           selectedcat={this.state.selectedcat}
-          elementId="fund"
+          elementId="indexFund"
         />
       </>
     );
