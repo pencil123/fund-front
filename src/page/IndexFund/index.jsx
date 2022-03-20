@@ -45,7 +45,7 @@ export class index extends Component {
   };
 
   recordlist = async (code) => {
-    let path = "fundRecord/find/list";
+    let path = "index-fund-record/find/list";
     let params = {
       code: code,
       startDay: this.state.dateStrings[0],
