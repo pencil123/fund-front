@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import requst from "../../util/request";
 import FundSelect from "../../components/FundSelect";
-import RecordShow from "../../components/RecordShow";
+import RecordShowWithVolume from "../../components/RecordShowWithVolume";
 import moment from "moment";
 export class index extends Component {
   constructor(props) {
@@ -19,6 +19,7 @@ export class index extends Component {
       month: [],
       twoweek: [],
       degree: [],
+      volume: [],
       date: [],
       dates: [today, monthAgo],
       dateStrings: [startString, endString],
@@ -58,6 +59,7 @@ export class index extends Component {
         month = [],
         twoweek = [],
         degree = [],
+        volume = [],
         date = [];
       res.reverse().forEach(function (record, index) {
         price.push(record.price);
@@ -65,6 +67,7 @@ export class index extends Component {
         month.push(record.avgMonth);
         twoweek.push(record.avgTwoWeek);
         degree.push(record.degree);
+        volume.push(record.volume);
         date.push(record.opendate);
       });
       this.setState({
@@ -73,6 +76,7 @@ export class index extends Component {
         month,
         twoweek,
         degree,
+        volume,
         date,
         selectedcat: code,
       });
@@ -89,13 +93,14 @@ export class index extends Component {
           dates={this.state.dates}
           datePickerChange={this.datePickerChange}
         />
-        <RecordShow
+        <RecordShowWithVolume
           price={this.state.price}
           week={this.state.week}
           month={this.state.month}
           twoweek={this.state.twoweek}
           degree={this.state.degree}
           date={this.state.date}
+          volume={this.state.volume}
           selectedcat={this.state.selectedcat}
           elementId="indexFund"
         />
