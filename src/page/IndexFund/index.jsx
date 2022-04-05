@@ -152,6 +152,7 @@ export class index extends Component {
     return (
       <>
         <Table
+        bordered
           rowKey="weekCode"
           columns={columns}
           dataSource={this.state.recordsWithRate}
