@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import requst from "../../util/request";
 import FundSelect from "../../components/FundSelect";
 import RecordShowWithVolume from "../../components/RecordShowWithVolume";
+import { Table } from "antd";
 import moment from "moment";
 export class index extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ export class index extends Component {
       cats: [],
       selectedcat: "",
       records: [],
+      recordsWithRate: [],
       price: [],
       week: [],
       month: [],
@@ -34,6 +36,16 @@ export class index extends Component {
         this.setState({ cats: res }, () => {
           this.recordlist(res[0].code);
         });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async indexRateList() {
+    let path = "indexFund/listWithRate";
+    try {
+      let res = await requst.get(path);
+      this.setState({ recordsWithRate: res });
     } catch (err) {
       console.error(err);
     }
@@ -84,8 +96,67 @@ export class index extends Component {
   };
 
   render() {
+    const columns = [
+      {
+        title: "周数据",
+        children: [
+          {
+            title: "周指标Code",
+            dataIndex: "weekCode",
+          },
+          {
+            title: "告警类型",
+            dataIndex: "weekName",
+          },
+          {
+            title: "接收人工号",
+            dataIndex: "weekRate",
+          },
+        ],
+      },
+      {
+        title: "两周数据",
+        children: [
+          {
+            title: "周指标Code",
+            dataIndex: "twoWeekCode",
+          },
+          {
+            title: "告警类型",
+            dataIndex: "twoWeekName",
+          },
+          {
+            title: "接收人工号",
+            dataIndex: "twoWeekRate",
+          },
+        ],
+      },
+      {
+        title: "月数据",
+        children: [
+          {
+            title: "周指标Code",
+            dataIndex: "monthCode",
+          },
+          {
+            title: "告警类型",
+            dataIndex: "monthName",
+          },
+          {
+            title: "接收人工号",
+            dataIndex: "monthRate",
+          },
+        ],
+      },
+    ];
     return (
       <>
+        <Table
+          rowKey="weekCode"
+          columns={columns}
+          dataSource={this.state.recordsWithRate}
+          scroll={{ y: 300 }}
+        />
         <FundSelect
           cats={this.state.cats}
           selectedcat={this.state.selectedcat}
@@ -109,6 +180,7 @@ export class index extends Component {
   }
   componentDidMount() {
     this.bankuaiList();
+    this.indexRateList();
   }
 }
 
