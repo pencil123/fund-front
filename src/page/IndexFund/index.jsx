@@ -101,7 +101,7 @@ export class index extends Component {
         title: "周数据",
         children: [
           {
-            title: "周指标Code",
+            title: "指标Code",
             dataIndex: "weekCode",
           },
           {
@@ -109,7 +109,7 @@ export class index extends Component {
             dataIndex: "weekName",
           },
           {
-            title: "接收人工号",
+            title: "增长率",
             dataIndex: "weekRate",
           },
         ],
@@ -118,7 +118,7 @@ export class index extends Component {
         title: "两周数据",
         children: [
           {
-            title: "周指标Code",
+            title: "指标Code",
             dataIndex: "twoWeekCode",
           },
           {
@@ -126,7 +126,7 @@ export class index extends Component {
             dataIndex: "twoWeekName",
           },
           {
-            title: "接收人工号",
+            title: "增长率",
             dataIndex: "twoWeekRate",
           },
         ],
@@ -135,7 +135,7 @@ export class index extends Component {
         title: "月数据",
         children: [
           {
-            title: "周指标Code",
+            title: "指标Code",
             dataIndex: "monthCode",
           },
           {
@@ -143,7 +143,7 @@ export class index extends Component {
             dataIndex: "monthName",
           },
           {
-            title: "接收人工号",
+            title: "增长率",
             dataIndex: "monthRate",
           },
         ],
@@ -156,6 +156,7 @@ export class index extends Component {
           columns={columns}
           dataSource={this.state.recordsWithRate}
           scroll={{ y: 300 }}
+          pagination={false}
         />
         <FundSelect
           cats={this.state.cats}
